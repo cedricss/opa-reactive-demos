@@ -1,0 +1,54 @@
+@-webkit-keyframes fade-in {
+0% {
+    background-color: transparent;
+}
+5% {
+    background-color: yellow;
+}
+100% {
+    background-color: inherit;
+}
+}
+
+@-moz-keyframes fade-in {
+0% {
+    background-color: transparent;
+}
+5% {
+    background-color: yellow;
+}
+100% {
+    background-color: inherit;
+}
+}
+
+.flash {
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0, 0;
+
+    -moz-animation-name: fade-in;
+    -moz-animation-duration: 0.4s;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-delay: 0, 0;
+}
+
+h2 code {
+    font-size: 25px;
+}
+
+footer {
+    color: #5B7C85;
+    padding-bottom:35px;
+}
+
+footer p {
+    margin:0px;
+}
+
+footer .container {
+    text-align:center;
+}
