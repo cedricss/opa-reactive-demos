@@ -2,7 +2,7 @@ module Thermostat {
 
     client function init(Dom.event _e) {
 
-        temp = Reactive.value("50")
+        temp = Reactive.make("50")
 
         function updated(_) {
             temp.set(Dom.get_value(#slider))

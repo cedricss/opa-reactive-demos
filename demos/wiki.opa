@@ -2,7 +2,7 @@ module Wiki {
 
     client function init(Dom.event _e) {
 
-        wiki = Reactive.cloud_value("Enter some text...")
+        wiki = Reactive.make("Enter some text...")
 
         function updated(_) {
             wiki.set(Dom.get_value(#text))
