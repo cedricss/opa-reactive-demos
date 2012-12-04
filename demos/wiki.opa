@@ -1,12 +1,25 @@
 module Wiki {
 
-    client function init(Dom.event _e) {
 
+    function init(Dom.event _e) {
         wiki = Reactive.make("Enter some text...")
 
-        function updated(_) {
-            wiki.set(Dom.get_value(#text))
+        wiki_textarea = wiki.render(
+                { function(v) <textarea style="width:100%;"rows="8" id=#textclient1>{v}</textarea> }
+        )
+
+        function updated(dom)(_) {
+            wiki.set(Dom.get_value(dom))
         }
+
+        Reactive.bind(#textclient1, {keyup}, updated(#textclient1));
+
+        demo =
+            <h4>Edit</h4>
+            <>{wiki_textarea}</>
+            <h4>Preview</h4>
+            <div class="well">{wiki}</div>
+            |> T.demo("SERVER - Wiki on the Cloud", _)
 
         info =
             <ul>
@@ -15,16 +28,13 @@ module Wiki {
             </ul>
             |> T.info
 
-        demo =
-            <h4>Edit</h4>
-            <textarea style="width:100%;" rows="8" id=#text onkeyup={updated}>{wiki}</textarea>
-            <h4>Preview</h4>
-            <div class="well">{wiki}</div>
-            |> T.demo("Wiki on the Cloud", _)
+        #main = <>{demo}{info}</>
 
-        html = <>{demo}</><>{info}</>
+    }
 
-        #main = html
+    function html() {
+
+        T.loading_demo()
     }
 
 code = T.code_gist(4153803,"wiki.opa")

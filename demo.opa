@@ -54,7 +54,7 @@ function page(url) {
         </div>
         <div class="span9" id="content-wrapper">
             <div id="content">
-            <div id=#main onready={D.init}>{T.demo(<>&nbsp;</>, <div style="height:300px;"><h4>Fetching the demo...</h4></div><br/>)}</div>
+            <div id=#main onready={D.init}>{D.html()}</div>
             {D.code}
         </div>
     </div>

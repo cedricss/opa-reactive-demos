@@ -9,6 +9,9 @@ module T {
             </div>
         </section>
     }
+    function loading_demo() {
+        demo(<>&nbsp;</>, <div style="height:300px;"><h4>Fetching the demo...</h4></div><br/>)
+    }
     function gist(id,filename) {
     	<gist data-id="{id}" data-file="{filename}">Loading
 		<a href="https://gist.github.com/{id}#{filename}">{filename}</a>...</gist>

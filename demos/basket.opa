@@ -49,14 +49,16 @@ module Basket {
             |> T.demo("Shopping Cart", _)
 
         #main = html
+    }
+
+    function html() {
+        T.loading_demo()
+    }
 
 
-}
-
-
-code = T.code_section(
-        <>{T.gist(4153803,"shopping_cart.opa")}</>
-        <>{T.gist(4153803,"template.opa")}</>
-       )
+    code = T.code_section(
+            <>{T.gist(4153803,"shopping_cart.opa")}</>
+            <>{T.gist(4153803,"template.opa")}</>
+           )
 
 }
