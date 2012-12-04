@@ -1,22 +1,24 @@
-module Thermostat {
+module CloudThermostat {
 
-    private temp = Reactive.make("50")
 
     function init(Dom.event _e) {
 
-        Scheduler.timer(1000, { function() temp.set("{Random.int(89)+10}") })
-    }
-
-    function html() {
+        temp = Reactive.make("50") // coming soon: |> Reactive.to_cloud_value
 
         function updated(Dom.event _e) {
             temp.set(Dom.get_value(#slider))
         }
 
+        temp_slider = temp.render(
+            { function(v) <input id=#slider type="range" value={temp.get()}/> }
+        )
+
+        Reactive.bind(#slider, {change}, updated);
+
         demo =
             <h2>The current temperature is <code>{temp}</code> C</h2>
-            <input id=#slider type="range" onchange={updated} onkeyup={updated}/>
-            |> T.demo("Reactive Thermostat", _)
+            <>{temp_slider}</>
+            |> T.demo("Remote Thermostat", _)
 
         info =
             <ul>
@@ -25,9 +27,15 @@ module Thermostat {
             </ul>
             |> T.info
 
-        <>{demo}{info}</>
+        #main = <>{demo}{info}</>
+
     }
 
-code = T.code_gist(4153803,"thermostat.opa")
+    function html() {
+
+        T.loading_demo()
+    }
+
+    code = T.code_gist(4153803,"thermostat.opa")
 
 }

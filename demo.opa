@@ -6,7 +6,7 @@ function get_demo(url) {
     case "thermostat" : Thermostat
     case "shopping" : Basket
     case "wiki" : Wiki
-    case "todo-list" : Wiki
+    case "cloud-thermostat" : CloudThermostat
     default : Thermostat
     }
 }
@@ -45,9 +45,7 @@ function page(url) {
                       {l("thermostat", "play", "Reactive Thermostat")}
                       {l("wiki", "font", "Wiki on the Cloud")}
                       {l("shopping", "shopping-cart", "Shopping Cart")}
-                      {""
-                        //l("todo-list", "user", "Collaborative Todo-List")
-                        }
+                      {l("cloud-thermostat", "play", "Remote Thermostat")}
                     </ul>
                 </nav>
             </aside>
