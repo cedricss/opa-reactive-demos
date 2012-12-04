@@ -80,7 +80,7 @@ Server.start(
     Server.http,
     [
 
-        {register : [ { doctype : { html5 } }, { js : [ "resources/js/gist.js" ] }, { css : [ "/resources/css/style.css", "/resources/inspiritas/inspiritas.css" ]} ] },
+        {register : [ { doctype : { html5 } }, { js : [ "resources/js/gist.js", "resources/js/html5slider.js" ] }, { css : [ "/resources/css/style.css", "/resources/inspiritas/inspiritas.css" ]} ] },
         {resources:@static_resource_directory("resources") },
         {custom:dispatcher}
     ]
