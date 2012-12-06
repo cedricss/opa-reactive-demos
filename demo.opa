@@ -7,6 +7,7 @@ function get_demo(url) {
     case "shopping" : Basket
     case "wiki" : Wiki
     case "cloud-thermostat" : CloudThermostat
+    case "chat" : Chat
     default : Thermostat
     }
 }
@@ -42,10 +43,12 @@ function page(url) {
             <aside>
                 <nav>
                     <ul class="nav">
-                      {l("thermostat", "play", "Reactive Thermostat")}
+                      {l("thermostat", "fire", "Reactive Thermostat")}
+                      {l("cloud-thermostat", "globe", "Remote Thermostat")}
                       {l("wiki", "font", "Wiki on the Cloud")}
                       {l("shopping", "shopping-cart", "Shopping Cart")}
-                      {l("cloud-thermostat", "play", "Remote Thermostat")}
+                      {l("chat", "comment", "Chat")}
+
                     </ul>
                 </nav>
             </aside>
