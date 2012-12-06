@@ -3,15 +3,14 @@ module Thermostat {
     private temp = Reactive.make("50")
 
     function init(Dom.event _e) {
+        void
+    }
 
-        Scheduler.timer(1000, { function() temp.set("{Random.int(89)+10}") })
+    private client function updated(Dom.event _e) {
+        temp.set(Dom.get_value(#slider))
     }
 
     function html() {
-
-        function updated(Dom.event _e) {
-            temp.set(Dom.get_value(#slider))
-        }
 
         demo =
             <h2>The current temperature is <code>{temp}</code> C</h2>
@@ -28,6 +27,6 @@ module Thermostat {
         <>{demo}{info}</>
     }
 
-code = T.code_gist(4153803,"thermostat.opa")
+    code = T.code_gist(4153803,"thermostat.opa")
 
 }

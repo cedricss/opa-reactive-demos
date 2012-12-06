@@ -1,8 +1,8 @@
 module Wiki {
 
 
-    function init(Dom.event _e) {
-        wiki = Reactive.make("Enter some text...")
+    client function init(Dom.event _e) {
+        wiki = Reactive.make("Enter some text...").sync("cloud-wiki")
 
         wiki_textarea = wiki.render(
                 { function(v) <textarea style="width:100%;"rows="8" id=#textclient1>{v}</textarea> }

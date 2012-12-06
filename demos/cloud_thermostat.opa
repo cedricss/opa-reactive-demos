@@ -1,19 +1,26 @@
+type temperature = {int value, int min, int max}
+@xmlizer(temperature) function temp_to_html(t){
+    <>{t.value}</>
+}
+
 module CloudThermostat {
 
+    client function init(Dom.event _e) {
 
-    function init(Dom.event _e) {
-
-        temp = Reactive.make("50") // coming soon: |> Reactive.to_cloud_value
+        temperature initial_temp = {value:50, min:0, max:100}
+        Reactive.value(temperature) temp = Reactive.make(initial_temp).sync("thermostat")
 
         function updated(Dom.event _e) {
-            temp.set(Dom.get_value(#slider))
+            temp.set({value:Int.of_string(Dom.get_value(#slider)), min:0, max:100})
         }
 
-        temp_slider = temp.render(
-            { function(v) <input id=#slider type="range" value={temp.get()}/> }
-        )
-
         Reactive.bind(#slider, {change}, updated);
+
+        temp_slider = Reactive.render(
+            { function(_)
+                t = temp.get();
+                <input id=#slider type="range" min={t.min} max={t.max} value={t.value}/> }
+        )(temp)
 
         demo =
             <h2>The current temperature is <code>{temp}</code> C</h2>
@@ -22,20 +29,19 @@ module CloudThermostat {
 
         info =
             <ul>
-            <li>The same reactive value is used both the server to compute the html, and on the client inside the timer.</li>
-            <li>The reactive value can be declared and then used indifferently on the server or on the client side. It just works.</li>
+            <li>Open another browser tab and move the slider: the sliders are all synchronized!</li>
             </ul>
             |> T.info
 
-        #main = <>{demo}{info}</>
-
+        #main = <>{demo}</><>{info}</>
     }
 
     function html() {
-
         T.loading_demo()
     }
 
-    code = T.code_gist(4153803,"thermostat.opa")
+    code = T.code_section(
+        <>Todo</>
+        ) // 4153803,"thermostat.opa"
 
 }

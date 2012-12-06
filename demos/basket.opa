@@ -12,7 +12,7 @@ module Basket {
 
     client function init(Dom.event _e) {
 
-        basket = Reactive.List.make([], Template.table_item, Template.table_empty)
+        basket = Reactive.List.make([], Template.table_item, Template.table_empty) |> Reactive.List.sync(_)("shopping-cart")
         basket_summary = Reactive.List.clone(basket, Template.list_item, Template.list_empty)
         items_initial = [ "Interactive Drum T-Shirt", "USB Webcam Rocket Launcher", "Super Mario Bros Wall Decals", "Yoda Plush Backpack", "WoW Beer Stein", "Victorinox Secure Pro USB Drive"]
         items = items_initial ++ [ "iPhone App Magnets", "Lego Star Wars Alarm Clock", "Sudoku Toilet Paper", "Darth Vader Lightsaber", "Halo Helmet", "Star Wars Death Star Planetarium", "R2 D2 Trashcan", "Tetris Table", "Social Media Pillows", "The Wearable Keyboard", "The Darth Vader Toaster", "Lego Minifig Foosball Table", "IP Address Door Mat"]
