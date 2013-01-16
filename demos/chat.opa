@@ -1,16 +1,17 @@
 module Chat {
 
-    client private module Template {
+    private module Template {
         function table_empty() { <></> }
         function table_item(message) { <tr><td style="width:150px"><i class="icon-user"></i> {message.author}</td><td class="flash">{message.content}</td></tr> }
     }
 
     private function make_item(author,content) { { _id:Random.string(8), ~author, ~content } }
+    private initial_messages = [ make_item("Robot", "Welcome on the chat."), make_item("Robot", "Post a new message now!") ]
+    private exposed messages = Reactive.List.make_sync(initial_messages, Template.table_item, Template.table_empty, "chat-room")
+
 
     client function init(Dom.event _e) {
 
-        initial_messages = [ make_item("Robot", "Welcome on the chat."), make_item("Robot", "Post a new message now!") ]
-        messages = Reactive.List.make(initial_messages, Template.table_item, Template.table_empty).sync("chat-room")
 
         // todo add message edition
 

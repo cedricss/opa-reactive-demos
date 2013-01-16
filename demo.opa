@@ -1,5 +1,5 @@
 import stdlib.themes.bootstrap.icons
-import stdlib.meteor.spark
+import stdlib.meteor.spark10
 
 function get_demo(url) {
     match(url) {

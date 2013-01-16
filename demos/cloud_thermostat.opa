@@ -5,10 +5,10 @@ type temperature = {int value, int min, int max}
 
 module CloudThermostat {
 
-    client function init(Dom.event _e) {
+    private temperature initial_temp = {value:50, min:0, max:100}
+    private exposed Reactive.value(temperature) temp = Reactive.make_sync(initial_temp, "cloud-thermostat")
 
-        temperature initial_temp = {value:50, min:0, max:100}
-        Reactive.value(temperature) temp = Reactive.make(initial_temp).sync("thermostat")
+    client function init(Dom.event _e) {
 
         function updated(Dom.event _e) {
             temp.set({value:Int.of_string(Dom.get_value(#slider)), min:0, max:100})

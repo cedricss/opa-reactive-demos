@@ -1,14 +1,15 @@
 module Wiki {
 
+    private exposed wiki = Reactive.make_sync(string "Enter some text...", "wiki")
 
     client function init(Dom.event _e) {
-        wiki = Reactive.make("Enter some text...").sync("cloud-wiki")
 
         wiki_textarea = wiki.render(
                 { function(v) <textarea style="width:100%;"rows="8" id=#textclient1>{v}</textarea> }
         )
 
-        function updated(dom)(_) {
+
+        function updated(dom)(Dom.event _e) {
             wiki.set(Dom.get_value(dom))
         }
 
@@ -37,7 +38,7 @@ module Wiki {
         T.loading_demo()
     }
 
-code = T.code_gist(4153803,"wiki.opa")
+    code = T.code_gist(4153803,"wiki.opa")
 
 }
 

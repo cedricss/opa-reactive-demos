@@ -1,17 +1,8 @@
 module Thermostat {
 
-    private temp = Reactive.make("50")
+    private client temp = Reactive.make("50")
 
     function init(Dom.event _e) {
-        void
-    }
-
-    private client function updated(Dom.event _e) {
-        temp.set(Dom.get_value(#slider))
-    }
-
-    function html() {
-
         demo =
             <h2>The current temperature is <code>{temp}</code> C</h2>
             <input id=#slider type="range" onchange={updated} onkeyup={updated}/>
@@ -24,7 +15,16 @@ module Thermostat {
             </ul>
             |> T.info
 
-        <>{demo}{info}</>
+        #main = <>{demo}{info}</>
+    }
+
+    private client function updated(Dom.event _e) {
+        temp.set(Dom.get_value(#slider))
+    }
+
+    function html() {
+
+        <></>
     }
 
     code = T.code_gist(4153803,"thermostat.opa")
