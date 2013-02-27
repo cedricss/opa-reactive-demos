@@ -1,4 +1,4 @@
-// Template module
+"// Template module
 module T {
     function demo(title, xhtml) {
     	<section>
